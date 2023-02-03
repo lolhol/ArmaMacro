@@ -1,10 +1,16 @@
+/** @format */
+
 import { radiansToDegree } from "./radiansToDegree";
 
-let SPEED = 0.2;
+import Settings from "../data/config/config";
+
+let lookSPEED;
 
 export function lookAtSlowly(x, y, z) {
   let hoekPitch;
   let hoekYaw;
+
+  getSpeed();
   if (x === undefined || y === undefined || z === undefined) {
     ChatLib.chat(" ");
   } else {
@@ -31,9 +37,23 @@ export function lookAtSlowly(x, y, z) {
     if (hoekYaw < -180) {
       hoekYaw += 360;
     }
-    Player.getPlayer().field_70177_z += hoekYaw * SPEED;
+    Player.getPlayer().field_70177_z += hoekYaw * lookSPEED;
     hoekPitch =
       radiansToDegree(Math.atan(dY / dis)) - Player.getPlayer().field_70125_A;
-    Player.getPlayer().field_70125_A += hoekPitch * SPEED;
+    Player.getPlayer().field_70125_A += hoekPitch * lookSPEED;
+  }
+}
+
+function getSpeed() {
+  if (Settings.SPEED == 1) {
+    lookSPEED = 0.2;
+  } else if (Settings.SPEED == 2) {
+    lookSPEED = 0.4;
+  } else if (Settings.SPEED == 3) {
+    lookSPEED = 0.6;
+  } else if (Settings.SPEED == 4) {
+    lookSPEED = 0.8;
+  } else if (Settings.SPEED == 5) {
+    lookSPEED = 1;
   }
 }
