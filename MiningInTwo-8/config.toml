@@ -1,0 +1,29 @@
+
+[main]
+	menu_keybind = true
+	top-to-bottom = true
+	block_on_route_esp = true
+	structure_finder = false
+	render_pathbreak_helper = false
+	add_block_to_list_keybind = true
+	smoothlook = 3
+	aotv_teleport_time = 368
+	macro_spot = 0
+
+[helper-mode]
+	turn_on_helper = true
+
+[fail-safes]
+	player_failsafe = false
+	player_esp_distance_ = 500
+	player_esp = false
+	distance = 50
+
+[fun]
+	block_esp_color_blue = 0
+	block_esp_color_green = 0
+	block_esp_color_red = 10
+
+[structure-finder]
+	structure_finder = false
+
