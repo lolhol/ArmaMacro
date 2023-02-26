@@ -4,10 +4,10 @@ import com.extra.MITExtras;
 import com.extra.commands.farming.cropNukerCommand;
 import com.extra.commands.mining.coalNukerCommand;
 import com.extra.data.MITconfig;
-import com.extra.utils.previous.chatUtils.SendChat;
-import com.extra.utils.previous.getUtils.checkIfItemInInv;
-import com.extra.utils.previous.getUtils.getBPS;
-import com.extra.utils.previous.getUtils.getCropType;
+import com.extra.utils.chatUtils.SendChat;
+import com.extra.utils.getUtils.checkIfItemInInv;
+import com.extra.utils.getUtils.getBPS;
+import com.extra.utils.getUtils.getCropType;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -25,14 +25,12 @@ public class onKeyPress {
             boolean vroomVroomCheck = MITconfig.coalVroomVroomMode;
             boolean normal = coalNukerCommand.coalNukerIsOn;
 
-            if (!vroomVroomCheck) {
-
-                coalNukerCommand.coalNukerIsOn = !coalNukerCommand.coalNukerIsOn;
-                str = normal ? "Coal Nuker Disabled!" : "Coal Nuker Enabled!";
-
+            if (vroomVroomCheck) {
+                normal = !normal;
+                str = normal ? "Coal Nuker Enabled!" : "Coal Nuker Disabled!";
             } else {
-                coalNukerCommand.coalVroomVroom = !coalNukerCommand.coalVroomVroom;
-                str = vroomVroom ? "Coal Vroom Vroom Nuker Disabled!" : "Coal Vroom Vroom Nuker Enabled!";
+                vroomVroom = !vroomVroom;
+                str = vroomVroom ? "Coal Nuker Enabled!" : "Coal Nuker Disabled!";
             }
 
             SendChat.chat("§l§4[MINING IN TWO]§r " + str);
